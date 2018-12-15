@@ -17,11 +17,10 @@ public class InputActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input);
-
-//        Intent intent = getIntent();
-
     }
 
+
+    // set mood to the clicked mood
     public void moodPicked(View view) {
         int button_ids[] = {R.id.imageButton_amazing, R.id.imageButton_angry, R.id.imageButton_happy,
                 R.id.imageButton_sad};
@@ -33,13 +32,15 @@ public class InputActivity extends AppCompatActivity {
         }
     }
 
+    // add entry to the database
     public void addEntry(View view) {
-        Log.d("mood", "mood is " + mood);
+
+        // if no mood is clicked, standard mood is happy
         if (mood == null) {
             mood = "happy";
-            Log.d("mood", "kom ik hier " + mood);
         }
 
+        // collect info and add it to the database
         String title = ((EditText) findViewById(R.id.title_input)).getText().toString();
         String content = ((EditText) findViewById(R.id.content_input)).getText().toString();
         JournalEntry entry = new JournalEntry(title, content, mood);
@@ -47,7 +48,9 @@ public class InputActivity extends AppCompatActivity {
         EntryDatabase db = EntryDatabase.getInstance(InputActivity.this);
         db.insert(entry);
 
+        // send user back to homescreen
         Intent intent = new Intent(InputActivity.this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 }

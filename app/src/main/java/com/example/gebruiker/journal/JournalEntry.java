@@ -3,9 +3,11 @@ package com.example.gebruiker.journal;
 import java.io.Serializable;
 
 public class JournalEntry implements Serializable {
+
     private int id;
     private String title, content, mood, timestamp;
 
+    // constructor
     public JournalEntry(int id, String title, String content, String mood, String timestamp) {
         this.id = id;
         this.title = title;
@@ -14,6 +16,7 @@ public class JournalEntry implements Serializable {
         this.timestamp = timestamp;
     }
 
+    // constructor
     public JournalEntry(String title, String content, String mood, String timestamp) {
         this.title = title;
         this.content = content;
@@ -21,6 +24,7 @@ public class JournalEntry implements Serializable {
         this.timestamp = timestamp;
     }
 
+    // constructor
     public JournalEntry(String title, String content, String mood) {
         this.title = title;
         this.content = content;
